@@ -19,11 +19,9 @@
       <input type="text" class="cell" name="12" />
     </div>
     <script>
-      var cells = document.getElementsByClassName("cell");
-
-      cells.forEach((cell) => {
+      document.querySelectorAll(".cell").forEach((cell) => {
         cell.addEventListener("input", (event) => {
-          cell.value = cell.value.replace(/[^a-zA-Z]/);
+          cell.value = cell.value.replace(/[^a-zA-Z]/, "");
         });
       });
     </script>
