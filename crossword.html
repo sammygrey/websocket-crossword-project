@@ -2,23 +2,40 @@
 <html>
   <head>
     <link rel="stylesheet" href="crossword.css" />
+
     <p id= "Header">CROSS WORD</p>
     <h3> </h3>
+
+    <script src="socket.io/socket.io.js"></script>
+    <script src="/sockets/crossword.js"></script>
+
   </head>
   <body>
     <div class="container">
-      <input type="text" class="cell" name="1" minlength="1" maxlength="1" />
-      <input type="text" class="cell" name="2" />
-      <input type="text" class="cell" name="3" />
-      <input type="text" class="cell" name="4" />
-      <input type="text" class="cell" name="5" />
-      <input type="text" class="cell" name="6" />
-      <input type="text" class="cell" name="7" />
-      <input type="text" class="cell" name="8" />
-      <input type="text" class="cell" name="9" />
-      <input type="text" class="cell" name="10" />
-      <input type="text" class="cell" name="11" />
-      <input type="text" class="cell" name="12" />
+      <input
+        type="text"
+        class="cell"
+        id="1"
+        name="1"
+        minlength="1"
+        maxlength="1"
+      />
+      <input type="text" class="cell" name="2" minlength="1" maxlength="1" />
+      <input type="text" class="cell" name="3" minlength="1" maxlength="1" />
+      <input type="text" class="cell" name="4" minlength="1" maxlength="1" />
+      <input type="text" class="cell" name="5" minlength="1" maxlength="1" />
+      <div class="cell-blank" name="6"></div>
+      <input type="text" class="cell" name="7" minlength="1" maxlength="1" />
+      <input type="text" class="cell" name="8" minlength="1" maxlength="1" />
+      <input type="text" class="cell" name="9" minlength="1" maxlength="1" />
+      <input type="text" class="cell" name="10" minlength="1" maxlength="1" />
+      <div class="cell-blank" name="11"></div>
+      <input type="text" class="cell" name="12" minlength="1" maxlength="1" />
+      <input type="text" class="cell" name="13" minlength="1" maxlength="1" />
+      <input type="text" class="cell" name="14" minlength="1" maxlength="1" />
+      <input type="text" class="cell" name="15" minlength="1" maxlength="1" />
+      <input type="text" class="cell" name="16" minlength="1" maxlength="1" />
+      <input type="text" class="cell" name="16" minlength="1" maxlength="1" />
     </div>
     <script>
       document.querySelectorAll(".cell").forEach((cell) => {
