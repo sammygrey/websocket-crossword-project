@@ -1,22 +1,21 @@
-
-
 //app.js
-const express = require('express');
+const express = require("express");
 const app = express();
-const server = require('http').Server(app);
+const server = require("http").Server(app);
+const port = process.env.PORT || 3000;
 
 //Socket.io
-const io = require('socket.io')(server);
+const io = require("socket.io")(server);
 let onlineUsers = {};
 
 io.on("connection", (socket) => {
-    // Make sure to send the channels to our chat file
-    require('./sockets/crossword.js')(io, socket, onlineUsers);
-
-
-    server.listen('3000', () => {
-        console.log('Server listening on Port 3000');
-  });
+  require("./sockets/crossword.js")(io, socket, onlineUsers);
 });
-  
-  
+
+app.get("/", (req, res) => {
+  res.render("crossword.html");
+});
+
+server.listen(port, () => {
+  console.log(`Server listening on Port ${port}`);
+});

@@ -1,12 +1,27 @@
 .container {
   height: 90vh;
-  margin: 2rem;
   display: grid;
   grid-template-columns: 200px 200px 200px 200px;
-  grid-template-rows: 200px 200px 200px;
+  grid-template-rows: 200px 200px 200px 200px;
 }
 .cell {
   color: black;
+  font-size: 3rem;
+  text-align: center;
+  padding: 4rem;
+  border: solid;
+}
+
+label {
+  position: relative;
+  font-size: 1rem;
+  text-align: left;
+  padding: 0;
+  z-index: 5;
+}
+
+.cell-blank {
+  background-color: black;
   font-size: 3rem;
   text-align: center;
   padding: 4rem;
