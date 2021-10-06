@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const server = require("http").Server(app);
 const port = process.env.PORT || 3000;
+app.use(express.static(__dirname));
 
 //Socket.io
 const io = require("socket.io")(server);
@@ -13,7 +14,7 @@ io.on("connection", (socket) => {
 });
 
 app.get("/", (req, res) => {
-  res.render("crossword.html");
+  res.sendFile("./crossword.html", { root: __dirname });
 });
 
 server.listen(port, () => {
