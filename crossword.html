@@ -5,18 +5,27 @@
   </head>
   <body>
     <div class="container">
-      <div class="cell cell-1">1.</div>
-      <div class="cell cell-2">2.</div>
-      <div class="cell cell-3">3.</div>
-      <div class="cell cell-4">4.</div>
-      <div class="cell cell-5">5.</div>
-      <div class="cell cell-6">6.</div>
-      <div class="cell cell-7">7.</div>
-      <div class="cell cell-8">8.</div>
-      <div class="cell cell-9">9.</div>
-      <div class="cell cell-9">10.</div>
-      <div class="cell cell-9">11.</div>
-      <div class="cell cell-9">12.</div>
+      <input type="text" class="cell" name="1" minlength="1" maxlength="1" />
+      <input type="text" class="cell" name="2" />
+      <input type="text" class="cell" name="3" />
+      <input type="text" class="cell" name="4" />
+      <input type="text" class="cell" name="5" />
+      <input type="text" class="cell" name="6" />
+      <input type="text" class="cell" name="7" />
+      <input type="text" class="cell" name="8" />
+      <input type="text" class="cell" name="9" />
+      <input type="text" class="cell" name="10" />
+      <input type="text" class="cell" name="11" />
+      <input type="text" class="cell" name="12" />
     </div>
+    <script>
+      var cells = document.getElementsByClassName("cell");
+
+      cells.forEach((cell) => {
+        cell.addEventListener("input", (event) => {
+          cell.value = cell.value.replace(/[^a-zA-Z]/);
+        });
+      });
+    </script>
   </body>
 </html>
