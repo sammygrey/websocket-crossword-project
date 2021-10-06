@@ -12,6 +12,12 @@
   border: solid;
 }
 
+#Header {
+  color:brown;
+  text-align: center;
+  font-size: 50px;
+}
+
 label {
   position: relative;
   font-size: 1rem;
@@ -27,3 +33,4 @@ label {
   padding: 4rem;
   border: solid;
 }
+
