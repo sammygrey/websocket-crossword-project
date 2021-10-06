@@ -7,7 +7,7 @@
     <h3> </h3>
 
     <script src="socket.io/socket.io.js"></script>
-    <script src="/sockets/crossword.js"></script>
+    <script src="/sockets/index.js"></script>
 
   </head>
   <body>
@@ -42,6 +42,21 @@
         cell.addEventListener("input", (event) => {
           cell.value = cell.value.replace(/[^a-zA-Z]/, "");
         });
+      });
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+    
+      var cell = document.getElementById('cell');
+      var input = document.getElementById('input');
+    
+      form.addEventListener('cell', function(e) {
+        e.preventDefault();
+        if (input.value) {
+          socket.emit('cell', input.value);
+          input.value = '';
+        }
       });
     </script>
   </body>
