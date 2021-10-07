@@ -10,9 +10,8 @@ const io = require("socket.io")(server);
 let onlineUsers = {};
 let letters = {};
 
-io.on("connection", (socket, cell) => {
-  require("./sockets/crossword.js")(io, socket, onlineUsers, cell);
-  console.log(cell);
+io.on("connection", (socket) => {
+  require("./sockets/crossword.js")(io, socket, onlineUsers);
 });
 
 app.get("/", (req, res) => {
