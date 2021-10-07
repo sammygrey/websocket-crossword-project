@@ -1,23 +1,10 @@
-module.exports = (io, socket, onlineUsers, channels) => {
+module.exports = (io, socket, onlineUsers, cellLetter) => {
 
-    
+    socket.on('cell', (cell) => {
+        
+        console.log(cell)
+      })
 
-    socket.on('new user', (username) => {
-      //Save the username as key to access the user's socket id
-      onlineUsers[username] = socket.id;
-      //Save the username to socket as well. This is important for later.
-      socket["username"] = username;
-      console.log(`✋ ${username} has joined the chat! ✋`);
-      io.emit("new user", username);
-    })
-    
-    socket.on('new message', (data) => {
-        //Save the new message to the channel.
-        console.log(data)
-        channels[data.channel].push({sender : data.sender, message : data.message});
-        //Emit only to sockets that are in that channel room.
-        io.to(data.channel).emit('new message', data);
-    });
     socket.on('get online users', () => {
         //Send over the onlineUsers
         socket.emit('get online users', onlineUsers);
@@ -33,5 +20,13 @@ module.exports = (io, socket, onlineUsers, channels) => {
     socket.on('show channels', () => {
       socket.emit('show channels', channels)
     })
+
+    socket.on('cell change', (data) => {
+        //Save the new message to the channel.
+        console.log(data)
+        channels[data.channel].push({sender : data.sender, message : data.message});
+        //Emit only to sockets that are in that channel room.
+        io.to(data.channel).emit('new message', data);
+    });
     
   }

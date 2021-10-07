@@ -37,27 +37,36 @@
       <input type="text" class="cell" name="16" minlength="1" maxlength="1" />
       <input type="text" class="cell" name="16" minlength="1" maxlength="1" />
     </div>
+    <script src="/socket.io/socket.io.js"></script>
     <script>
+      var socket = io();
+
+
       document.querySelectorAll(".cell").forEach((cell) => {
         cell.addEventListener("input", (event) => {
           cell.value = cell.value.replace(/[^a-zA-Z]/, "");
+          if (cell.value !== "") {
+            socket.emit('cell', cell.value)
+            console.log("im in the html sucka")
+          }
         });
       });
     </script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
+    
+    <!-- <script>
       var socket = io();
     
       var cell = document.getElementById('cell');
       var input = document.getElementById('input');
     
-      form.addEventListener('cell', function(e) {
+      document.querySelector('.cell', function(e) {
         e.preventDefault();
-        if (input.value) {
-          socket.emit('cell', input.value);
-          input.value = '';
+        console.log("im in the html")
+        if (cell.value) {
+          socket.emit('cell', cell.value);
+          cell.value = '';
         }
       });
-    </script>
+    </script> -->
   </body>
 </html>
