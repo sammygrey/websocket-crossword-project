@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="/public/crossword.css" />
+    <link rel="stylesheet" href="./public/crossword.css" />
 
     <p id="Header">CLASH WORD</p>
     <h3></h3>
 
     <script src="socket.io/socket.io.js"></script>
-    <script src="/sockets/crossword.js"></script>
   </head>
   <body>
     <div class="content">
-      <h1> Across</h1>
-      <p>1. A laboratory. </p>
-      <p>5. Abbrevation for I am away</p>
-      <p>7. Means "Faster Than Light.</p>
-      <p>6. profoundly immoral and wicked.</p>
-  
-      <h1> Down</h1>
-      <p>1. The existence of an individual human being or animal</p>
-      <p>2. Is defined as a motorized off-highway vehicle designed to travel on four low-pressure'</p>
-      <p>4. A Middle English form of soul </p>
-      <p>3. Often as name A polite form of address for a woman.</p>
+      <h1>Across</h1>
+      <p>1. A jelly-like substance made from algae</p>
+      <p>5. Spanish for "yes"</p>
+      <p>7. Preposition used to indicate in, on, or near</p>
+      <p>6. Not valid, Null</p>
+
+      <h1>Down</h1>
+      <p>1. A succulent plant used to make Tequila and syrup</p>
+      <p>2. preposition that expresses motion in the direction of something</p>
+      <p>4. Adverb meaning to the same amount, or for instance</p>
+      <p>3. The hard, bitter part of a melon or fruit</p>
     </div>
 
     <div class="container">
@@ -46,8 +45,9 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
+      var cells = document.querySelectorAll(".cell");
 
-      document.querySelectorAll(".cell").forEach((cell) => {
+      cells.forEach((cell) => {
         cell.addEventListener("input", (event) => {
           cell.value = cell.value.replace(/[^a-zA-Z]/, "");
           let data = {};
@@ -58,10 +58,9 @@
         });
       });
 
-      socket.on("cell change", function (data) {
+      socket.on("change cell", async function (data) {
         cell = document.getElementById(Object.keys(data)[0]);
-        console.log(cell.value);
-        cell.innerHTML = Object.values(data)[0];
+        cell.value = Object.values(data)[0];
       });
     </script>
   </body>

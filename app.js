@@ -36,9 +36,8 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
   console.log("Socket.IO console connected!");
-  socket.on("cell change", (cell) => {
-    console.log(cell);
-    io.emit("cell change", cell);
+  socket.on("cell change", (data) => {
+    io.emit("change cell", data);
   });
 });
 
