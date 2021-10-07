@@ -15,7 +15,7 @@ io.on("connection", (socket) => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile("./crossword.html", { root: __dirname });
+  res.sendFile("./public/crossword.html", { root: __dirname });
 });
 
 server.listen(port, () => {

@@ -3,12 +3,11 @@
   <head>
     <link rel="stylesheet" href="crossword.css" />
 
-    <p id= "Header">CROSS WORD</p>
-    <h3> </h3>
+    <p id="Header">CROSS WORD</p>
+    <h3></h3>
 
     <script src="socket.io/socket.io.js"></script>
-    <script src="/sockets/index.js"></script>
-
+    <script src="/index.js"></script>
   </head>
   <body>
     <div class="container">
@@ -47,15 +46,15 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
-    
-      var cell = document.getElementById('cell');
-      var input = document.getElementById('input');
-    
-      form.addEventListener('cell', function(e) {
+
+      var cell = document.getElementById("cell");
+      var input = document.getElementById("input");
+
+      form.addEventListener("cell", function (e) {
         e.preventDefault();
         if (input.value) {
-          socket.emit('cell', input.value);
-          input.value = '';
+          socket.emit("cell", input.value);
+          input.value = "";
         }
       });
     </script>
