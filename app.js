@@ -8,10 +8,11 @@ app.use(express.static(__dirname));
 //Socket.io
 const io = require("socket.io")(server);
 let onlineUsers = {};
+let letters = {};
 
-io.on("connection", (socket) => {
-  require("./sockets/crossword.js")(io, socket, onlineUsers);
-  console.log("connected");
+io.on("connection", (socket, cell) => {
+  require("./sockets/crossword.js")(io, socket, onlineUsers, cell);
+  console.log(cell);
 });
 
 app.get("/", (req, res) => {
