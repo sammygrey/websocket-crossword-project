@@ -10,12 +10,12 @@ const io = require("socket.io")(server);
 let onlineUsers = {};
 
 io.on("connection", (socket) => {
-  require("./public/index.js")(io, socket, onlineUsers);
+  require("./sockets/crossword.js")(io, socket, onlineUsers);
   console.log("connected");
 });
 
 app.get("/", (req, res) => {
-  res.sendFile("./public/crossword.html", { root: __dirname });
+  res.sendFile("public/crossword.html", { root: __dirname });
 });
 
 server.listen(port, () => {

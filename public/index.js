@@ -12,7 +12,7 @@ $(document).ready(() => {
   console.log(currentUser);
 
   app.get("/", (req, res) => {
-    res.sendFile(__dirname + "index.js");
+    res.sendFile(__dirname + "sockets/crossword.js");
   });
 
   io.on("connection", (socket) => {
