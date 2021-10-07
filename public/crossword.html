@@ -44,8 +44,11 @@
         cell.addEventListener("input", (event) => {
           cell.value = cell.value.replace(/[^a-zA-Z]/, "");
           if (cell.value !== "") {
-            socket.emit("cell", cell.value);
-            console.log("im in the html sucka");
+            cellName = cell.getAttribute("name");
+            console.log(cellName);
+            cellValue = cell.value;
+            let letter = { cellName: cellValue };
+            socket.emit("cell", letter);
           }
         });
       });

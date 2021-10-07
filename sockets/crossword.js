@@ -1,8 +1,9 @@
-module.exports = (io, socket, onlineUsers, cellLetter) => {
+module.exports = (io, socket, onlineUsers, cell) => {
 
-    socket.on('cell', (cell) => {
+    socket.on('cell', (letter) => {
         
-        console.log(cell)
+        console.log(letter)
+        
       })
 
     socket.on('get online users', () => {
