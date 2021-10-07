@@ -11,7 +11,7 @@ socket.emit("get online users");
 console.log(currentUser);
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "sockets/index.js");
+  res.sendFile(__dirname + "sockets/crossword.js");
 });
 
 io.on("connection", (socket) => {
