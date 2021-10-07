@@ -39,9 +39,15 @@
           let data = {};
           data[cell.id] = cell.value;
           if (cell.value !== "") {
-            socket.emit("cell", data);
+            socket.emit("cell change", data);
           }
         });
+      });
+
+      socket.on("cell change", function (data) {
+        cell = document.getElementById(Object.keys(data)[0]);
+        console.log(cell.value);
+        cell.innerHTML = Object.values(data)[0];
       });
     </script>
   </body>
