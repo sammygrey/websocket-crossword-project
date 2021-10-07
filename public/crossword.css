@@ -1,7 +1,7 @@
 .container {
   height: 90vh;
   display: grid;
-  margin-top: -50%;
+  margin-top: -30%;
   grid-template-columns: 200px 200px 200px 200px;
   grid-template-rows: 200px 200px 200px 200px;
   float: left;
@@ -15,14 +15,14 @@
 }
 
 #Header {
-  color:brown;
+  color: brown;
   text-align: center;
   font-size: 50px;
 }
 
 .content {
-  position: relative; 
-  left: 900px; 
+  position: relative;
+  left: 900px;
   display: grid;
   grid-row: auto;
 }
@@ -44,4 +44,3 @@ label {
   padding: 4rem;
   border: solid;
 }
-

@@ -42,10 +42,12 @@
       <input type="text" class="cell" id="16" minlength="1" maxlength="1" />
       <input type="text" class="cell" id="16" minlength="1" maxlength="1" />
     </div>
+    <div class="winDisplay"></div>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
       var cells = document.querySelectorAll(".cell");
+      var winDisplay = document.querySelector(".winDisplay");
 
       cells.forEach((cell) => {
         cell.addEventListener("input", (event) => {
@@ -58,9 +60,13 @@
         });
       });
 
-      socket.on("change cell", async function (data) {
+      socket.on("change cell", function (data) {
         cell = document.getElementById(Object.keys(data)[0]);
         cell.value = Object.values(data)[0];
+      });
+
+      socket.on("win", function () {
+        winDisplay.innerHTML = "You Won!";
       });
     </script>
   </body>

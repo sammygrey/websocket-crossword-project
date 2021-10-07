@@ -9,25 +9,24 @@ app.use(express.static(__dirname));
 //Socket.io
 const io = require("socket.io")(server);
 let onlineUsers = {};
-let letters = {};
+let userLetters = {};
 
 const correctValues = {
   1: "a",
-  2: "a",
+  2: "g",
   3: "a",
-  4: "a",
-  5: "a",
-  6: "a",
-  7: "a",
-  8: "a",
+  4: "r",
+  5: "g",
+  7: "s",
+  8: "i",
   9: "a",
-  10: "a",
-  11: "a",
-  12: "a",
-  13: "a",
-  14: "a",
-  15: "a",
-  16: "a",
+  10: "t",
+  12: "n",
+  13: "v",
+  14: "o",
+  15: "i",
+  16: "d",
+  17: "e",
 };
 
 app.get("/", (req, res) => {
@@ -37,7 +36,11 @@ app.get("/", (req, res) => {
 io.on("connection", (socket) => {
   console.log("Socket.IO console connected!");
   socket.on("cell change", (data) => {
+    userLetters[Object.keys(data)[0]] = Object.values(data)[0];
     io.emit("change cell", data);
+    if (userLetters == correctValues) {
+      io.emit("win");
+    }
   });
 });
 
