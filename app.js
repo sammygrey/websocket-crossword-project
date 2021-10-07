@@ -10,8 +10,8 @@ const io = require("socket.io")(server);
 let onlineUsers = {};
 
 io.on("connection", (socket) => {
-  require("./sockets/index.js")(io, socket, onlineUsers);
-  console.log("connected")
+  require("./public/index.js")(io, socket, onlineUsers);
+  console.log("connected");
 });
 
 app.get("/", (req, res) => {
